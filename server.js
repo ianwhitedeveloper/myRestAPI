@@ -77,4 +77,16 @@ server.del('/product/:id', function (req, res, next) {
 });
 
 
+server.get('/product/:id', function (req, res, next) {
+    db.products.findOne({
+        id: req.params.id
+    }, function (err, data) {
+        res.writeHead(200, {
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        res.end(JSON.stringify(data));
+    });
+    return next();
+});
+
 module.exports = server;

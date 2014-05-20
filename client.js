@@ -50,12 +50,22 @@ client.put('/product/' + testProduct.id, testProduct, function (err, req, res, s
     }
 });
 
-client.del('/product/' + testProduct.id, function (err, req, res, status) {
+// client.del('/product/' + testProduct.id, function (err, req, res, status) {
+//     if (err) {
+//         console.log("An error ocurred >>>>>>");
+//         console.log(err);
+//     } else {
+//         console.log('Product deleted >>>>>>>');
+//         console.log(status);
+//     }
+// });
+
+client.get('/product/' + testProduct.id, function (err, req, res, product) {
     if (err) {
         console.log("An error ocurred >>>>>>");
         console.log(err);
     } else {
-        console.log('Product deleted >>>>>>>');
-        console.log(status);
+        console.log('Product with id ' + product.id + '  >>>>>>>');
+        console.log(product);
     }
 });
