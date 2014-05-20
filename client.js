@@ -49,3 +49,13 @@ client.put('/product/' + testProduct.id, testProduct, function (err, req, res, s
         console.log(status);
     }
 });
+
+client.del('/product/' + testProduct.id, function (err, req, res, status) {
+    if (err) {
+        console.log("An error ocurred >>>>>>");
+        console.log(err);
+    } else {
+        console.log('Product deleted >>>>>>>');
+        console.log(status);
+    }
+});

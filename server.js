@@ -64,4 +64,17 @@ server.put('/product/:id', function (req, res, next) {
     return next();
 });
 
+server.del('/product/:id', function (req, res, next) {
+    db.products.remove({
+        id: req.params.id
+    }, function (err, data) {
+        res.writeHead(200, {
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        res.end(JSON.stringify(true));
+    });
+    return next();
+});
+
+
 module.exports = server;
