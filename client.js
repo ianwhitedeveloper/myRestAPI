@@ -38,3 +38,14 @@ client.get('/products', function (err, req, res, products) {
         console.log(products);
     }
 });
+
+testProduct.price = "1000 USD",
+client.put('/product/' + testProduct.id, testProduct, function (err, req, res, status) {
+    if (err) {
+        console.log("An error ocurred >>>>>>");
+        console.log(err);
+    } else {
+        console.log('Product saved >>>>>>>');
+        console.log(status);
+    }
+});
