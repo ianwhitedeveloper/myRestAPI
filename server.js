@@ -35,4 +35,32 @@ server.post('/product', function(req, res, next) {
   return next();
 });
 
+server.put('/product/:id', function (req, res, next) {
+  // get the existing product
+  db.products.find({
+    id: req.params.id
+  }, function (err, data) {
+    // merge req.params/product with the server/product
+    var updProd = {};  // updated products
+    // logic similar to jQuery.extend(); to merge 2 objects
+    for (var n in data) {
+      updProd[n] = data[n];
+    }
+    for (var n in req.params) {
+      updProd[n] = req.params[n];
+    }
+    db.product.update({
+      id: req.params.id
+    }, updProd, {
+      multi: false
+    }, function (err, data) {
+      res.writeHead(200, {
+        'Content-Type': 'application/json; charset=utf-8'
+      });
+      res.end(JSON.stringify(data));
+    })
+  });
+  return next();
+});
+
 module.exports = server;
