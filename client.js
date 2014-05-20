@@ -27,3 +27,14 @@ client.post('/product', testProduct, function (err, req, res, product) {
         console.log(product);
     }
 });
+
+client.get('/products', function (err, req, res, products) {
+    if (err) {
+        console.log("An error ocurred >>>>>>");
+        console.log(err);
+    } else {
+        console.log("Total products " + products.length);
+        console.log('All products >>>>>>>');
+        console.log(products);
+    }
+});
